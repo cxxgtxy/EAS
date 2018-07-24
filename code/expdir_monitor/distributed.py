@@ -7,7 +7,7 @@ import re
 import json
 import shlex
 
-max_running_machine = 5
+max_running_machine = 2
 
 _max_used_mem = 0.3
 _max_used_gpu = 0.3
@@ -95,7 +95,7 @@ class RemoteController:
 	
 	@property
 	def exe_cmd(self):
-		return 'CUDA_VISIBLE_DEVICES={gpuid} python3 {executive}'.format(
+		return 'source activate python35 CUDA_VISIBLE_DEVICES={gpuid} python3 {executive}'.format(
 			executive=self.executive,
 			gpuid=self.gpuid
 		)
